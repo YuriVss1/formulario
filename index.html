@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>My Formulário</title>
+</head>
+<body>
+    <header>
+        
+       
+    </header>
+
+
+    <section>
+    
+    </section>
+
+    <article>
+        <div class="box">
+        <p>Preencha os campos abaixo!</p>
+        <form action="" method="post" id="form">
+            <fieldset>
+                <legend id="leg">Formulário de Captação</legend>
+            <fieldset>
+                <legend>Digite o seu nome completo</legend>
+             <div>
+                <label for="name"></label>
+                <input type="text" placeholder="Insira seu nome" class="inputs required" oninput="nameValidate()">
+
+                <span class="span-required">O nome deve ter no minimo 4 Caracteres</span>
+            </div>
+        
+         </fieldset>
+
+        <fieldset>
+            <legend>Digite o Seu Contato</legend>
+             <div>
+
+                <label for="numero"></label>
+                <input type="number"  placeholder=" seu numero" class="inputs required" oninput="numberValidate()" >
+                <span class="span-required">Digite um número válido</span>
+            </div>
+        </fieldset>
+
+            <fieldset>
+                <legend>Digite Seu melhor E-mail</legend>
+               <div>
+
+                <label for="email"></label>
+                <input type="email"  placeholder=" seu email" class="inputs required" oninput="emailValidate()" >
+                <span class="span-required">Digite um e-mail válido</span>
+
+
+             </div>
+             <div>
+                <label for="m">Masculino</label>
+
+                <input type="radio" name="Genero" id="sexo" value="Masculino">
+                </label>
+
+                 <br>
+
+                <label for="f">Feminino</label>
+
+                <input type="radio" name="Genero" id="sexo" value="Feminino">
+
+                </label>
+                
+             </div>
+            </fieldset>
+                <fieldset>
+                    <legend>Qual Sua Linguagem Preferida</legend>
+                        <div>
+                            <label for="language">Javascript</label>
+                            <input type="checkbox" name="Javascript" id="js" placeholder="a">
+                        </div>
+                        <div>
+                            <label for="language">React</label>
+                            <input type="checkbox" name="react" id="rt" placeholder="a" >
+                        </div>
+                        <div>
+                            <label for="language">C#</label>
+                            <input type="checkbox" name="C#" id="c#" placeholder="a" >
+                        </div>
+
+            </fieldset>
+            </fieldset>
+            <div>
+                <label for="menssage"></label> <br>
+                <textarea name="mensagem" id="mensagem" cols="53" rows="08" placeholder="Digite Sua Mensagem aqui"></textarea>
+                
+            </div>
+           
+           <div>
+                <label for="" id="label"></label>
+                <input type="file" id="file">
+           </div> <br>
+               <div>
+            <button type="submit">Enviar Agora</button>
+           </div>
+           
+        </form>
+        </div>
+    </div>
+    </article>
+    
+
+</body>
+<script>
+    const form = document.getElementById('form');
+    const campos = document.querySelectorAll('.required');
+    const spans = document.querySelectorAll('.span-required');
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        nameValidate();
+        emailValidate();
+    })
+    function setError(index){
+        campos[index].style.border = '1px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    function removeError(index){
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
+    function nameValidate(){
+        if(campos[0].value.length < 4)
+        {
+            setError(0);
+            
+        }
+        else
+        {
+            removeError(0);
+        }
+    }
+
+    function emailValidate() {
+    if 
+        (!emailRegex.test(campos[2].value)) {
+        setError(2);
+    } else {
+        removeError(2);
+    }
+}
+
+function numberValidate(){
+    if
+    (campos[1].value.length < 11){
+        setError(1);
+    }
+    else{
+        removeError(1);
+    }
+}
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    showAlert();
+})
+function showAlert() {
+    alert('Formulário enviado com sucesso!');
+}
+
+</script>
+</html>
